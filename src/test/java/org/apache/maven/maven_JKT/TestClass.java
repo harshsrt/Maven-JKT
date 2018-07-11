@@ -11,8 +11,7 @@ import org.apache.maven.maven_JKT.CheckoutPage;
 import org.apache.maven.maven_JKT.MatrixPage;
 
 public class TestClass {
-	private WebDriver driver;
-
+	
 	@Test(priority = 0)
 
 	public void VerifyPaybleAmount() {
@@ -22,20 +21,23 @@ public class TestClass {
 		driver.manage().window().maximize();
 
 		driver.get("https://www.thetrainline.com/");
-
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		SearchPage.EnterOrigin(driver);
 		SearchPage.EnterDestination(driver);
+		SearchPage.SelectPassenger(driver);
+		SearchPage.ClickDoneButton(driver);
 		SearchPage.ClickSubmitButton(driver);
 
 		MatrixPage.CheckFirstClassTicket(driver);
-		String s = MatrixPage.PaybleAmount(driver);
+		String s = MatrixPage.PayableAmount(driver);
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		MatrixPage.ClickOnQuickBuyButton(driver);
 		MatrixPage.CustomerTypeSelection(driver);
 		MatrixPage.EnterEmail(driver);
 		MatrixPage.ClickContinue(driver);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		Assert.assertEquals(s, CheckoutPage.PaybleAmount(driver));
+		
+		// Verify the payable amount on matrix page and checkout page
+		Assert.assertEquals(s, CheckoutPage.PayableAmount(driver));
 		driver.close();
 	}
 
@@ -47,8 +49,6 @@ public class TestClass {
 		driver.manage().window().maximize();
 
 		driver.get("https://www.thetrainline.com/");
-
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		SearchPage.EnterOrigin(driver);
 		SearchPage.EnterDestination(driver);
 		SearchPage.SelectPassenger(driver);
@@ -56,14 +56,17 @@ public class TestClass {
 		SearchPage.ClickSubmitButton(driver);
 
 		MatrixPage.CheckFirstClassTicket(driver);
-		String s = MatrixPage.PaybleAmount(driver);
+		String s = MatrixPage.PayableAmount(driver);
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		MatrixPage.ClickOnQuickBuyButton(driver);
 		MatrixPage.CustomerTypeSelection(driver);
 		MatrixPage.EnterEmail(driver);
 		MatrixPage.ClickContinue(driver);
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		Assert.assertEquals(s, CheckoutPage.PaybleAmount(driver));
-		String t = CheckoutPage.PassengerDetail(driver);
+		
+		// Verify the payable same on matrix page and checkout page
+		Assert.assertEquals(s, CheckoutPage.PayableAmount(driver));
+		
+		// Verify child ticket included on checkout page
 		Assert.assertTrue(CheckoutPage.PassengerDetail(driver).contains("child"));
 		driver.close();
 	}

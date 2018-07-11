@@ -5,7 +5,7 @@
     <classes>
       <class name="org.apache.maven.maven_JKT.TestClass">
         <methods>
-          <include name="Verify"/>
+          <include name="VerifyPaybleAmount"/>
         </methods>
       </class> <!-- org.apache.maven.maven_JKT.TestClass -->
     </classes>

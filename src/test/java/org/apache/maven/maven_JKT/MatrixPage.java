@@ -16,10 +16,6 @@ public class MatrixPage {
 
 	// Click on first class ticket
 	public static void CheckFirstClassTicket(WebDriver driver) {
-
-		// element = driver.findElement(By.xpath(
-		// "//*[@id=\"app\"]/div/div[1]/main/div[2]/div[1]/div/div/div[2]/div[3]/div/div[1]/div[1]/div[2]/div[2]/div[2]/div/div/div/ul/li[1]"));
-		// element.click();
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
 				"//*[@id=\"app\"]/div/div[1]/main/div[2]/div[1]/div/div/div[2]/div[3]/div/div[1]/div[1]/div[2]/div[2]/div[2]/div/div/div/ul/li[1]")));
@@ -27,23 +23,25 @@ public class MatrixPage {
 		ob.moveToElement(element).click().build().perform();
 	}
 
-	// Click on continue button
+	// Click on quick buy button
 	public static void ClickOnQuickBuyButton(WebDriver driver) {
-		WebDriverWait wait = new WebDriverWait(driver, 10);
-		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
-				"//*[@id=\"app\"]/div/div[1]/main/div[2]/div[2]/div/div/div/div/div/div[1]/div[1]/div/div[2]/div/button[2]")));
+		String buttonText = "Quick buy ticket";
+		String string = String.format("//button[contains(.,'%s')]", buttonText);
+		element = driver.findElement(By.xpath(string));
+		WebDriverWait wait = new WebDriverWait(driver, 20);
+		WebElement elementWait = wait.until(ExpectedConditions.elementToBeClickable(element));
 		Actions ob = new Actions(driver);
-		ob.moveToElement(element).click(element).build().perform();
+		ob.moveToElement(elementWait).click().build().perform();
 	}
 
-	// Click on continue button after preferences
+	// Click on customer selection
 	public static void CustomerTypeSelection(WebDriver driver) {
 		element = driver.findElement(By.id("isGuest"));
 		Actions ob = new Actions(driver);
 		ob.moveToElement(element).click(element).build().perform();
 	}
 
-	// Click on continue button after preferences
+	// Enter email
 	public static void EnterEmail(WebDriver driver) {
 		element = driver.findElement(By.id("email"));
 		element.sendKeys("harsh.harsh17@gmail.com");
@@ -51,18 +49,17 @@ public class MatrixPage {
 	
 	// Click on continue button after preferences
 	public static void ClickContinue(WebDriver driver) {
-		element = driver.findElement(By.xpath(
-				"//*[@id=\"app\"]/div/div[1]/main/div[2]/div/div/div/div/div/div/form/div[4]/button"));
+		String buttonText = "Continue";
+		String string = String.format("//button[contains(.,'%s')]", buttonText);
+		element = driver.findElement(By.xpath(string));
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		WebElement elementWait = wait.until(ExpectedConditions.elementToBeClickable(element));
 		Actions ob = new Actions(driver);
-		ob.click(element).build().perform();
+		ob.moveToElement(elementWait).click().build().perform();
 	}
 	
-	// Returns payble amount
-	public static String PaybleAmount(WebDriver driver) {
-
-//		element = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[1]/main/div[2]/div[2]/div/div/div/div/div/div[1]/div[1]/div/div[1]/h3/span[2]/span/span"));
-//		return element.getText();
-		//WebDriverWait wait = new WebDriverWait(driver, 10);
+	// Returns payable amount
+	public static String PayableAmount(WebDriver driver) {
 		element = driver.findElement(By.xpath(
 				"//*[@id=\"app\"]/div/div[1]/main/div[2]/div[1]/div/div/div[2]/div[3]/div/div[1]/div[1]/div[2]/div[2]/div[2]/div/div/div/ul/li[1]/label/span[2]"));
 		return element.getText();

@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="62457" started-at="2018-07-10T20:03:17Z" finished-at="2018-07-10T20:04:19Z">
+  <suite name="Default suite" duration-ms="78209" started-at="2018-07-11T15:12:12Z" finished-at="2018-07-11T15:13:30Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="62457" started-at="2018-07-10T20:03:17Z" finished-at="2018-07-10T20:04:19Z">
+    <test name="Default test" duration-ms="78209" started-at="2018-07-11T15:12:12Z" finished-at="2018-07-11T15:13:30Z">
       <class name="org.apache.maven.maven_JKT.TestClass">
-        <test-method status="PASS" signature="VerifyChildTicket()[pri:0, instance:org.apache.maven.maven_JKT.TestClass@fe5c40]" name="VerifyChildTicket" duration-ms="62422" started-at="2018-07-11T01:33:17Z" finished-at="2018-07-11T01:34:19Z">
+        <test-method status="PASS" signature="VerifyPaybleAmount()[pri:0, instance:org.apache.maven.maven_JKT.TestClass@2f8f11]" name="VerifyPaybleAmount" duration-ms="41126" started-at="2018-07-11T20:42:12Z" finished-at="2018-07-11T20:42:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- VerifyPaybleAmount -->
+        <test-method status="PASS" signature="VerifyChildTicket()[pri:0, instance:org.apache.maven.maven_JKT.TestClass@2f8f11]" name="VerifyChildTicket" duration-ms="37034" started-at="2018-07-11T20:42:53Z" finished-at="2018-07-11T20:43:30Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- VerifyChildTicket -->

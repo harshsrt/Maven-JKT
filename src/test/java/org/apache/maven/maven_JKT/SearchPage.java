@@ -33,11 +33,13 @@ public class SearchPage {
 
 	// Click on submit button
 	public static void ClickSubmitButton(WebDriver driver) {
+		String buttonText = "Get times & tickets";
+		String string = String.format("//button[contains(.,'%s')]", buttonText);
+		element = driver.findElement(By.xpath(string));
 		WebDriverWait wait = new WebDriverWait(driver, 10);
-		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(
-				By.xpath("//*[@id=\"app\"]/div/div[1]/main/div[1]/div/div/div[1]/section/form/div[5]/button")));
+		WebElement elementWait = wait.until(ExpectedConditions.elementToBeClickable(element));
 		Actions ob = new Actions(driver);
-		ob.moveToElement(element).click(element).build().perform();
+		ob.moveToElement(elementWait).click().build().perform();
 	}
 
 	// Select passenger
@@ -52,11 +54,13 @@ public class SearchPage {
 
 	// Click on done button
 	public static void ClickDoneButton(WebDriver driver) {
+		String buttonText = "Done";
+		String string = String.format("//button[contains(.,'%s')]", buttonText);
+		element = driver.findElement(By.xpath(string));
 		WebDriverWait wait = new WebDriverWait(driver, 10);
-		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(
-				By.xpath("//*[@id=\"app\"]/div/div[1]/main/div[1]/div/div/div[1]/section/form/div[4]/div/div/button")));
+		WebElement elementWait = wait.until(ExpectedConditions.elementToBeClickable(element));
 		Actions ob = new Actions(driver);
-		ob.moveToElement(element).click().build().perform();
+		ob.moveToElement(elementWait).click().build().perform();
 	}
 
 }
